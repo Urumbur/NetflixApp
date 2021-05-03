@@ -30,16 +30,16 @@ const Navigation = () => {
         <nav>
             <ul className={classes.navList}>
                 <li>
-                    <NavLink activeClassName={classes.isActive} exact to="/">Home</NavLink>
+                    <NavLink activeClassName={classes.isActive} exact to="/NetflixApp">Home</NavLink>
                 </li>
                 <li>
-                    <NavLink activeClassName={classes.isActive} to="/films">Films</NavLink>
+                    <NavLink activeClassName={classes.isActive} to="/NetflixApp/films">Films</NavLink>
                 </li>
                 <li>
-                    <NavLink activeClassName={classes.isActive} to="/series">Series</NavLink>
+                    <NavLink activeClassName={classes.isActive} to="/NetflixApp/series">Series</NavLink>
                 </li>
                 <li>
-                    <NavLink activeClassName={classes.isActive} to="/myList">My List</NavLink>
+                    <NavLink activeClassName={classes.isActive} to="/NetflixApp/myList">My List</NavLink>
                 </li>
             </ul>
         </nav>
