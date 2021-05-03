@@ -1,24 +1,48 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useEffect, useState} from 'react';
 import './App.css';
+import {BrowserRouter as Router, Route} from "react-router-dom";
+import Header from "./Components/Header";
+import MainPage from "./Components/MainPage";
+import Films from "./Components/Films";
+import Series from "./Components/Series";
+import MyList from "./Components/MyList";
+import {fetchData} from "./Services/fetchData";
 
-function App() {
+const App = () => {
+    const [filmsList, setFilmsList] = useState([]);
+    const [filterList, setFilterList] = useState([]);
+
+    fetchData.then(res => setFilmsList(res.feed.entry));
+
+    const searchFilter = (e: any) => {
+        const write = e.target.value
+        const filterFilms = filmsList.filter((el: any) => {
+            return el["im:name"].label.toLowerCase().indexOf(write.toLowerCase()) !== -1;
+        });
+        setFilterList(filterFilms);
+    };
+
+    useEffect(() => {
+        setFilterList(filmsList)
+    },[filmsList])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+        <Router>
+            <Header searchFilter={searchFilter} />
+            <Route exact path="/">
+                <MainPage filmsList={filterList} />
+            </Route>
+            <Route path="/films">
+                <Films />
+            </Route>
+            <Route path="/series">
+                <Series />
+            </Route>
+            <Route path="/myList">
+                <MyList />
+            </Route>
+        </Router>
     </div>
   );
 }
