@@ -30,16 +30,16 @@ const App = () => {
     <div>
         <Router>
             <Header searchFilter={searchFilter} />
-            <Route exact path="/">
+            <Route exact path="/NetflixApp/">
                 <MainPage filmsList={filterList} />
             </Route>
-            <Route path="/films">
+            <Route path="/NetflixApp/films">
                 <Films />
             </Route>
-            <Route path="/series">
+            <Route path="/NetflixApp/series">
                 <Series />
             </Route>
-            <Route path="/myList">
+            <Route path="/NetflixApp/myList">
                 <MyList />
             </Route>
         </Router>
