@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactPlayer from 'react-player'
-import {Box, ClickAwayListener, makeStyles} from "@material-ui/core";
+import { Box, ClickAwayListener, makeStyles } from "@material-ui/core";
+import { PlayerProps } from "../types";
 
 const useStyle = makeStyles({
     playerBox: {
@@ -11,14 +12,15 @@ const useStyle = makeStyles({
     },
 })
 
-const VideoPlayer = (props: any) => {
+
+const VideoPlayer = (props: PlayerProps) => {
     const { playerOpen, handleClose } = props;
     const c = useStyle();
     const [filmUrl, setFilmUrl] = useState('');
 
     useEffect(() => {
         if(playerOpen.id > 0) setFilmUrl(playerOpen.url);
-    }, [playerOpen.id])
+    }, [playerOpen.id]);
 
     return (
         <Box>

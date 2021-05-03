@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
-import {Card, CardActionArea, CardContent, CardMedia, makeStyles, Typography} from "@material-ui/core";
+import { Box, Card, CardActionArea, CardContent, CardMedia, makeStyles, Typography } from "@material-ui/core";
 import Player from './Player';
-
-export type FilmListProps = {
-    filmsList: any[];
-}
+import { FilmListProps, FilmProps } from "../types";
 
 const useStyles = makeStyles({
     root: {
@@ -60,7 +57,7 @@ const useStyles = makeStyles({
 
 const MainPage = ({filmsList}: FilmListProps) => {
     const classes = useStyles();
-    const [playerOpen, setPlayerOpen]= useState({
+    const [playerOpen, setPlayerOpen]= useState<FilmProps>({
         id: 0,
         isOpen: false,
         url: ''
@@ -80,7 +77,7 @@ const MainPage = ({filmsList}: FilmListProps) => {
     }
 
     return (
-        <div>
+        <Box>
             <ul className={classes.cardList}>
                 {filmsList.map(el => {
                     return(
@@ -97,14 +94,14 @@ const MainPage = ({filmsList}: FilmListProps) => {
                                             {el["im:name"].label}
                                         </Typography>
                                     </CardContent>
-                                    <div className={classes.description}>
+                                    <Box className={classes.description}>
                                         <Typography className={classes.spacing} variant="h5" component="h3">
                                             {el["im:name"].label}
                                         </Typography>
                                         <Typography className={classes.spacing} variant="body2" component="p">
                                             {descriptionLength(el.summary.label)}
                                         </Typography>
-                                    </div>
+                                    </Box>
                                 </CardActionArea>
                             </Card>
                         </li>
@@ -112,7 +109,7 @@ const MainPage = ({filmsList}: FilmListProps) => {
                 })}
             </ul>
             <Player playerOpen={playerOpen} handleClose={handleClose} />
-        </div>
+        </Box>
     );
 }
 

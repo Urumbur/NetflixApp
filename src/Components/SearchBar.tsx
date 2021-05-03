@@ -2,6 +2,7 @@ import React from 'react';
 import InputBase from '@material-ui/core/InputBase';
 import { createStyles, fade, Theme, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
+import { Box } from "@material-ui/core";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -68,10 +69,10 @@ const SearchBar = ({searchFilter}: SearchBarProps) => {
     const classes = useStyles();
 
     return (
-        <div className={classes.search}>
-            <div className={classes.searchIcon}>
+        <Box className={classes.search}>
+            <Box className={classes.searchIcon}>
                 <SearchIcon />
-            </div>
+            </Box>
             <InputBase
                 placeholder="Search…"
                 onChange={searchFilter}
@@ -81,7 +82,7 @@ const SearchBar = ({searchFilter}: SearchBarProps) => {
                 }}
                 inputProps={{ 'aria-label': 'search' }}
             />
-        </div>
+        </Box>
     );
 }
 

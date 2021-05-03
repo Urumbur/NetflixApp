@@ -1,7 +1,8 @@
 import React from 'react';
 import Navigation from "./Navigation";
 import SearchBar from "./SearchBar";
-import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+import { Box } from "@material-ui/core";
 import netflixLogo from '../Static/Images/netflix.png'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -23,13 +24,13 @@ const Header = ({searchFilter}: any) => {
     const classes = useStyles();
 
     return (
-        <div className={classes.headerWrapper}>
-            <div className={classes.navigation}>
+        <Box className={classes.headerWrapper}>
+            <Box className={classes.navigation}>
                 <img src={netflixLogo} alt="Netflix logo" />
                 <Navigation />
-            </div>
+            </Box>
             <SearchBar searchFilter={searchFilter} />
-        </div>
+        </Box>
     );
 }
 
